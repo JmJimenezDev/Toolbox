@@ -299,6 +299,46 @@
         "invalid_token": "Invalid JWT token",
         "decode_failed": "Error decoding JWT"
       }
+    },
+    "url-encoder": {
+      "title": "URL Encoder/Decoder",
+      "description": "Encode and decode URLs for special characters.",
+      "label": {
+        "input": "Input",
+        "output": "Output"
+      },
+      "placeholder": {
+        "input-encode": "Write the URL you want to encode...",
+        "input-decode": "Paste the encoded URL you want to decode...",
+        "output": "The result will appear here..."
+      },
+      "actions": {
+        "encode": "Encode",
+        "decode": "Decode"
+      },
+      "errors": {
+        "invalid": "Invalid URL"
+      }
+    },
+    "base64": {
+      "title": "Base64 Encoder/Decoder",
+      "description": "Encode and decode text to Base64 format.",
+      "label": {
+        "input": "Input",
+        "output": "Output"
+      },
+      "placeholder": {
+        "input-encode": "Write the text you want to encode...",
+        "input-decode": "Paste the Base64 code you want to decode...",
+        "output": "The result will appear here..."
+      },
+      "actions": {
+        "encode": "Encode",
+        "decode": "Decode"
+      },
+      "errors": {
+        "invalid": "Invalid Base64 string"
+      }
     }
   }
 }

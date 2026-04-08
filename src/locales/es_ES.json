@@ -299,6 +299,46 @@
         "invalid_token": "Token JWT inválido",
         "decode_failed": "Error al decodificar el JWT"
       }
+    },
+    "url-encoder": {
+      "title": "Codificador/Decodificador URL",
+      "description": "Codifica y decodifica URLs para caracteres especiales.",
+      "label": {
+        "input": "Entrada",
+        "output": "Salida"
+      },
+      "placeholder": {
+        "input-encode": "Escribe la URL que quieres codificar...",
+        "input-decode": "Pega la URL codificada que quieres decodificar...",
+        "output": "El resultado aparecerá aquí..."
+      },
+      "actions": {
+        "encode": "Codificar",
+        "decode": "Decodificar"
+      },
+      "errors": {
+        "invalid": "URL inválida"
+      }
+    },
+    "base64": {
+      "title": "Codificador/Decodificador Base64",
+      "description": "Codifica y decodifica texto a formato Base64.",
+      "label": {
+        "input": "Entrada",
+        "output": "Salida"
+      },
+      "placeholder": {
+        "input-encode": "Escribe el texto que quieres codificar...",
+        "input-decode": "Pega el código Base64 que quieres decodificar...",
+        "output": "El resultado aparecerá aquí..."
+      },
+      "actions": {
+        "encode": "Codificar",
+        "decode": "Decodificar"
+      },
+      "errors": {
+        "invalid": "Cadena Base64 inválida"
+      }
     }
   }
 }
