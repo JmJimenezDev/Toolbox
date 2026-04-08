@@ -339,6 +339,16 @@
       "errors": {
         "invalid": "Cadena Base64 inválida"
       }
+    },
+    "color-converter": {
+      "title": "Convertidor de Colores",
+      "description": "Convierte entre formatos de color HEX, RGB y HSL con vista previa.",
+      "label": {
+        "preview": "Vista previa",
+        "hex": "HEX",
+        "rgb": "RGB",
+        "hsl": "HSL"
+      }
     }
   }
 }

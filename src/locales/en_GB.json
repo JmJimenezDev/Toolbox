@@ -339,6 +339,16 @@
       "errors": {
         "invalid": "Invalid Base64 string"
       }
+    },
+    "color-converter": {
+      "title": "Color Converter",
+      "description": "Convert between HEX, RGB and HSL color formats with preview.",
+      "label": {
+        "preview": "Preview",
+        "hex": "HEX",
+        "rgb": "RGB",
+        "hsl": "HSL"
+      }
     }
   }
 }
