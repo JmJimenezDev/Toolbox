@@ -4,9 +4,10 @@ type PillButtonProps = {
     onClick: () => void;
     type?: "red" | "green" | "yellow";
     children: React.ReactNode;
+    ariaLabel?: string;
 };
 
-export const PillButton = ({ onClick, type = "red", children }: PillButtonProps) => {
+export const PillButton = ({ onClick, type = "red", children, ariaLabel }: PillButtonProps) => {
     const buttonClasses = clsx(
         "cursor-pointer px-3 py-1 rounded-2xl text-xs",
         {
@@ -17,7 +18,7 @@ export const PillButton = ({ onClick, type = "red", children }: PillButtonProps)
     );
 
     return (
-        <button onClick={onClick} className={buttonClasses}>
+        <button onClick={onClick} className={buttonClasses} aria-label={ariaLabel}>
             {children}
         </button>
     );

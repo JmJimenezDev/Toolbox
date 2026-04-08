@@ -1,8 +1,10 @@
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import { plugins } from "../../utils/pluginLoader";
 import { Link } from "react-router-dom";
 
 export const Home = () => {
+  const { t } = useTranslation();
+  
   const groupedPlugins = plugins.reduce((acc, plugin) => {
     const category = plugin.category || t("menu.utilities");
     if (!acc[category]) acc[category] = [];

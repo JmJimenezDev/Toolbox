@@ -1,14 +1,16 @@
 import Editor from "@monaco-editor/react";
-import { t } from "i18next";
-import { useState, useEffect, useRef } from "react";
-import { CardSection } from "../../../components/CardSection";
 import debounce from "lodash.debounce";
+import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { IoCheckmarkOutline, IoCopyOutline, IoDownloadOutline } from "react-icons/io5";
+import { CardSection } from "../../../components/CardSection";
 import { jsonSyntaxHighlight } from "../../../utils/utils";
 
 const MAX_SIZE_BYTES = 5 * 1024 * 1024;
 
 export default function JsonFormatter() {
+    const { t } = useTranslation();
+      
     const [text, setText] = useState("");
     const [output, setOutput] = useState("");
     const [error, setError] = useState<string | null>(null);
@@ -177,11 +179,11 @@ export default function JsonFormatter() {
             <div className="grid grid-cols-12 gap-5" onDrop={handleDrop} onDragOver={(e) => e.preventDefault()} onPaste={handlePaste}>
                 <div className="col-span-12 lg:col-span-6 flex flex-col gap-2">
                     <div className="flex items-center justify-between">
-                        <label className="text-sm text-neutral-600 dark:text-neutral-400">
+                        <span className="text-sm text-neutral-600 dark:text-neutral-400">
                             JSON - {t("plugins.json-formatter.label.input-placeholder")}
-                        </label>
+                        </span>
 
-                        {text && <button className="text-sm text-red-500 hover:underline"
+                        {text && <button aria-label={t("commons.clear")} className="text-sm text-red-500 hover:underline"
                             onClick={() => {
                                 setText("");
                                 setOutput("");
@@ -202,15 +204,15 @@ export default function JsonFormatter() {
                     />
 
                     <div className="flex flex-wrap items-center gap-2">
-                        <button onClick={formatJson} className="flex-1 cursor-pointer py-2 px-4 rounded bg-neutral-900 hover:bg-neutral-800 text-neutral-200 dark:bg-neutral-100 dark:hover:bg-neutral-300 dark:text-neutral-800">
+                        <button aria-label={t("plugins.json-formatter.actions.format")} onClick={formatJson} className="flex-1 cursor-pointer py-2 px-4 rounded bg-neutral-900 hover:bg-neutral-800 text-neutral-200 dark:bg-neutral-100 dark:hover:bg-neutral-300 dark:text-neutral-800">
                             {t("plugins.json-formatter.actions.format")}
                         </button>
 
-                        <button onClick={minifyJson} className="flex-1 cursor-pointer py-2 px-4 rounded bg-neutral-900 hover:bg-neutral-800 text-neutral-200 dark:bg-neutral-100 dark:hover:bg-neutral-300 dark:text-neutral-800">
+                        <button aria-label={t("plugins.json-formatter.actions.minify")} onClick={minifyJson} className="flex-1 cursor-pointer py-2 px-4 rounded bg-neutral-900 hover:bg-neutral-800 text-neutral-200 dark:bg-neutral-100 dark:hover:bg-neutral-300 dark:text-neutral-800">
                             {t("plugins.json-formatter.actions.minify")}
                         </button>
 
-                        <button onClick={validateJson} className="flex-1 cursor-pointer py-2 px-4 rounded bg-neutral-900 hover:bg-neutral-800 text-neutral-200 dark:bg-neutral-100 dark:hover:bg-neutral-300 dark:text-neutral-800">
+                        <button aria-label={t("plugins.json-formatter.actions.validate")} onClick={validateJson} className="flex-1 cursor-pointer py-2 px-4 rounded bg-neutral-900 hover:bg-neutral-800 text-neutral-200 dark:bg-neutral-100 dark:hover:bg-neutral-300 dark:text-neutral-800">
                             {t("plugins.json-formatter.actions.validate")}
                         </button>
                     </div>
@@ -236,7 +238,7 @@ export default function JsonFormatter() {
 
                         {output && !error && (
                             <div className="flex gap-3">
-                                <button onClick={downloadJson} disabled={!text}
+                                <button aria-label={t("commons.download")} onClick={downloadJson} disabled={!text}
                                     className="flex items-center gap-2 cursor-pointer py-2 px-4 rounded bg-neutral-900 hover:bg-neutral-800 text-neutral-200 dark:bg-neutral-100 dark:hover:bg-neutral-300 dark:text-neutral-800 disabled:opacity-50"
                                 >
                                     <IoDownloadOutline aria-hidden="true" className="text-lg" /> {t("commons.download")}

@@ -145,6 +145,7 @@ export default function TimeZoneConverter() {
 
                 <button
                     onClick={setCurrentTime}
+                    aria-label={t("plugins.time-zone-converter.label.set-current-time")}
                     className="cursor-pointer mt-5 py-2 px-4 rounded bg-neutral-900 hover:bg-neutral-800 text-neutral-200 dark:bg-neutral-100 dark:hover:bg-neutral-300 dark:text-neutral-800"
                 >
                     {t("plugins.time-zone-converter.label.set-current-time")}
@@ -172,10 +173,10 @@ export default function TimeZoneConverter() {
                                 className="border-l-4 border-green-500 rounded py-2 px-2  bg-neutral-200 dark:bg-neutral-950"
                             >
                                 <div className="flex justify-between mb-1">
-                                    <PillButton onClick={() => toggleFavorite(tz.zone)} type="yellow">
+                                    <PillButton onClick={() => toggleFavorite(tz.zone)} type="yellow" ariaLabel={favoriteTimeZones.includes(tz.zone) ? "Remove from favorites" : "Add to favorites"}>
                                         {favoriteTimeZones.includes(tz.zone) ? <IoStar size={16} /> : <IoStarOutline size={16} />}
                                     </PillButton>
-                                    <PillButton onClick={() => removeTimeZone(tz.zone)}>
+                                    <PillButton onClick={() => removeTimeZone(tz.zone)} ariaLabel="Remove time zone">
                                         {t("commons.remove")}
                                     </PillButton>
                                 </div>

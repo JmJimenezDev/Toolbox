@@ -1,6 +1,6 @@
-import { t } from "i18next";
-import { CardSection } from "../../components/CardSection";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { CardSection } from "../../components/CardSection";
 
 type TreeNode = {
     value: string;
@@ -8,6 +8,8 @@ type TreeNode = {
 };
 
 export default function DirectoryTreeGenerator() {
+    const { t } = useTranslation();
+      
     const [text, setText] = useState<string>("");
     const [asciiTree, setAsciiTree] = useState<string>("");
 
@@ -102,6 +104,7 @@ export default function DirectoryTreeGenerator() {
                         {text && (
                             <button
                                 onClick={() => setText("")}
+                                aria-label={t("commons.clear")}
                                 className="text-sm text-red-500 hover:underline"
                             >
                                 {t("commons.clear")}
@@ -119,6 +122,7 @@ export default function DirectoryTreeGenerator() {
                     />
                     <button
                         onClick={handleGenerate}
+                        aria-label={t("plugins.directory-tree-generator.button.generate")}
                         className="cursor-pointer w-full mt-2 py-2 px-4 rounded bg-neutral-900 hover:bg-neutral-800 text-neutral-200 dark:bg-neutral-100 dark:hover:bg-neutral-300 dark:text-neutral-800"
                     >
                         {t("plugins.directory-tree-generator.button.generate")}

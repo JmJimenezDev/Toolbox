@@ -1,8 +1,10 @@
-import { t } from 'i18next';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { CardSection } from '../../../components/CardSection';
 
 export default function WordCounter() {
+    const { t } = useTranslation();
+      
     const [text, setText] = useState("");
 
     const wordCount = text.trim() ? text.trim().split(/\s+/).length : 0;
@@ -33,7 +35,7 @@ export default function WordCounter() {
                 <label htmlFor="text" className="text-sm text-neutral-600 dark:text-neutral-400">
                     {t("commons.text")}
                 </label>
-                {text && <button onClick={() => setText("")} className="text-sm text-red-500 hover:underline">{t("commons.clear")}</button>}
+                {text && <button onClick={() => setText("")} aria-label={t("commons.clear")} className="text-sm text-red-500 hover:underline">{t("commons.clear")}</button>}
             </div>
             <textarea
                 id="text"

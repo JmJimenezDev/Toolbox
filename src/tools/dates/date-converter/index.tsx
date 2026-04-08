@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import { CardSection } from "../../../components/CardSection";
 
 type Unit = "ms" | "s" | "min" | "h" | "d" | "w" | "mo" | "y" | "epoch" | "date";
 
 export default function DateConverter() {
+  const { t } = useTranslation();
+    
   const [fromDate, setFromDate] = useState<string>("");
   const [toDate, setToDate] = useState<string>("");
   const [fromValue, setFromValue] = useState<string>("");
@@ -121,7 +123,7 @@ export default function DateConverter() {
           <input id="to-date" type="datetime-local" className="mt-2 w-full" value={toDate} onChange={handleChange(setToDate)} />
         </div>
       </div>
-      <button onClick={calculateDifference} className="cursor-pointer w-full mt-5 py-2 px-4 rounded bg-neutral-900 hover:bg-neutral-800 text-neutral-200 dark:bg-neutral-100 dark:hover:bg-neutral-300 dark:text-neutral-800">
+      <button aria-label={t("plugins.date-converter.label.calculate-difference")} onClick={calculateDifference} className="cursor-pointer w-full mt-5 py-2 px-4 rounded bg-neutral-900 hover:bg-neutral-800 text-neutral-200 dark:bg-neutral-100 dark:hover:bg-neutral-300 dark:text-neutral-800">
         {t("plugins.date-converter.label.calculate-difference")}
       </button>
       <div aria-live="polite" className="font-mono py-2 px-4 w-full min-h-10 mt-5 border-l-4 border-green-500 rounded bg-neutral-200 dark:bg-neutral-950">
@@ -152,7 +154,7 @@ export default function DateConverter() {
           </div>
         </div>
       </div>
-      <button onClick={convertValue} className="cursor-pointer w-full mt-5 py-2 px-4 rounded bg-neutral-900 hover:bg-neutral-800 text-neutral-200 dark:bg-neutral-100 dark:hover:bg-neutral-300 dark:text-neutral-800">
+      <button aria-label={t("plugins.date-converter.label.convert")} onClick={convertValue} className="cursor-pointer w-full mt-5 py-2 px-4 rounded bg-neutral-900 hover:bg-neutral-800 text-neutral-200 dark:bg-neutral-100 dark:hover:bg-neutral-300 dark:text-neutral-800">
         {t("plugins.date-converter.label.convert")}
       </button>
     </CardSection>

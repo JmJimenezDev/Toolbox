@@ -1,11 +1,13 @@
-import { t } from "i18next";
-import { CardSection } from "../../components/CardSection";
-import { useRef, useState } from "react";
-import { QRCodeSVG } from "qrcode.react";
-import { IoDownloadOutline } from "react-icons/io5";
 import clsx from "clsx";
+import { QRCodeSVG } from "qrcode.react";
+import { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { IoDownloadOutline } from "react-icons/io5";
+import { CardSection } from "../../components/CardSection";
 
 export default function QrGenerator() {
+    const { t } = useTranslation();
+      
     const [type, setType] = useState("url");
     const [text, setText] = useState("");
     const [logo, setLogo] = useState<string | null>(null);
@@ -112,25 +114,35 @@ export default function QrGenerator() {
                 </legend>
 
                 <div className="grid grid-cols-2 gap-4 mt-2">
-                    <label className="flex items-center gap-3 p-3 rounded-lg bg-neutral-200 dark:bg-neutral-800">
-                        <input type="color" value={fgColor} onChange={(e) => setFgColor(e.target.value)}
+                    <div className="flex items-center gap-3 p-3 rounded-lg bg-neutral-200 dark:bg-neutral-800">
+                        <input 
+                            type="color" 
+                            id="qr-fg-color"
+                            value={fgColor} 
+                            onChange={(e) => setFgColor(e.target.value)}
                             className="size-10 cursor-pointer border-none bg-transparent"
+                            aria-label={t("plugins.qr-generator.label.foreground-color")}
                         />
                         <div>
                             <p className="text-xs text-neutral-500">{t("plugins.qr-generator.label.foreground-color")}</p>
                             <p className="font-mono text-sm">{fgColor}</p>
                         </div>
-                    </label>
+                    </div>
 
-                    <label className="flex items-center gap-3 p-3 rounded-lg bg-neutral-200 dark:bg-neutral-800">
-                        <input type="color" value={bgColor} onChange={(e) => setBgColor(e.target.value)}
+                    <div className="flex items-center gap-3 p-3 rounded-lg bg-neutral-200 dark:bg-neutral-800">
+                        <input 
+                            type="color" 
+                            id="qr-bg-color"
+                            value={bgColor} 
+                            onChange={(e) => setBgColor(e.target.value)}
                             className="size-10 cursor-pointer border-none bg-transparent"
+                            aria-label={t("plugins.qr-generator.label.background-color")}
                         />
                         <div>
                             <p className="text-xs text-neutral-500">{t("plugins.qr-generator.label.background-color")}</p>
                             <p className="font-mono text-sm">{bgColor}</p>
                         </div>
-                    </label>
+                    </div>
                 </div>
 
                 <div className="flex gap-2 mt-3">
@@ -169,7 +181,7 @@ export default function QrGenerator() {
                     </label>
                     {logo && <div className="flex items-center gap-2">
                         <img src={logo} alt="logo preview" className="size-10 rounded border border-neutral-300 dark:border-neutral-700" />
-                        <button onClick={() => setLogo(null)} className="ml-3 text-sm text-red-500 hover:underline">{t("commons.remove")}</button>
+                        <button onClick={() => setLogo(null)} aria-label={t("commons.remove")} className="ml-3 text-sm text-red-500 hover:underline">{t("commons.remove")}</button>
                     </div>}
                 </div>
             </div>
@@ -188,7 +200,7 @@ export default function QrGenerator() {
             </div>
 
             <div className="flex items-center justify-center gap-1 mt-5">
-                <button onClick={downloadQR} disabled={!text}
+                <button aria-label={t("commons.download")} onClick={downloadQR} disabled={!text}
                     className="flex items-center gap-2 cursor-pointer py-2 px-4 rounded bg-neutral-900 hover:bg-neutral-800 text-neutral-200 dark:bg-neutral-100 dark:hover:bg-neutral-300 dark:text-neutral-800 disabled:opacity-50"
                 >
                     <IoDownloadOutline aria-hidden="true" className="text-lg" /> {t("commons.download")}

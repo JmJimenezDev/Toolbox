@@ -1,11 +1,13 @@
-import { t } from "i18next";
-import { CardSection } from "../../../components/CardSection";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import rehypeSanitize from "rehype-sanitize";
+import remarkGfm from "remark-gfm";
+import { CardSection } from "../../../components/CardSection";
 
 export default function MarkDownViewer() {
+    const { t } = useTranslation();
+      
     const [text, setText] = useState("");
 
     return <CardSection title={t("plugins.markdown-viewer.title")} description={t("plugins.markdown-viewer.description")}
@@ -16,7 +18,7 @@ export default function MarkDownViewer() {
                     <label htmlFor="text" className="text-sm text-neutral-600 dark:text-neutral-400">
                         Markdown
                     </label>
-                    {text && <button onClick={() => setText("")} className="text-sm text-red-500 hover:underline">{t("commons.clear")}</button>}
+                    {text && <button onClick={() => setText("")} aria-label={t("commons.clear")} className="text-sm text-red-500 hover:underline">{t("commons.clear")}</button>}
                 </div>
                 <textarea
                     id="text"

@@ -3,8 +3,8 @@ import "dayjs/locale/es";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import timezone from "dayjs/plugin/timezone";
 import utc from "dayjs/plugin/utc";
-import { t } from "i18next";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { IoCheckmarkOutline, IoCopyOutline } from "react-icons/io5";
 import { CardSection } from "../../../components/CardSection";
 import i18n from "../../../utils/i18n";
@@ -26,6 +26,8 @@ const base64UrlDecode = (str: string): string => {
 };
 
 export default function JwtDecoder() {
+    const { t } = useTranslation();
+      
     const [jwt, setJwt] = useState("");
     const [error, setError] = useState("");
     const [decodedJwt, setDecodedJwt] = useState<{
@@ -93,7 +95,7 @@ export default function JwtDecoder() {
                 className="w-full mt-2 p-2 font-mono bg-neutral-200 dark:bg-neutral-800 rounded"
             />
 
-            <button onClick={decodeJwt}
+            <button aria-label={t("plugins.jwt-decoder.label.decode")} onClick={decodeJwt}
                 className="cursor-pointer w-full mt-5 py-2 px-4 rounded bg-neutral-900 hover:bg-neutral-800 text-neutral-200 dark:bg-neutral-100 dark:hover:bg-neutral-300 dark:text-neutral-800"
             >
                 {t("plugins.jwt-decoder.label.decode")}
