@@ -3,6 +3,7 @@ import { CardSection } from "../../../components/CardSection";
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import rehypeSanitize from "rehype-sanitize";
 
 export default function MarkDownViewer() {
     const [text, setText] = useState("");
@@ -34,7 +35,7 @@ export default function MarkDownViewer() {
                 </div>
                 <div className="w-full p-3 bg-neutral-200 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 rounded resize-none h-110 overflow-y-auto">
                     <div className="prose dark:prose-invert max-w-none">
-                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSanitize]}>
                             {text}
                         </ReactMarkdown>
                     </div>

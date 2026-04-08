@@ -14,12 +14,23 @@ dayjs.extend(localizedFormat);
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
+const base64UrlDecode = (str: string): string => {
+    let base64 = str.replace(/-/g, "+").replace(/_/g, "/");
+    while (base64.length % 4) base64 += "=";
+    const decoded = atob(base64);
+    try {
+        return decodeURIComponent(decoded.split("").map(c => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2)).join(""));
+    } catch {
+        return decoded;
+    }
+};
+
 export default function JwtDecoder() {
     const [jwt, setJwt] = useState("");
     const [error, setError] = useState("");
     const [decodedJwt, setDecodedJwt] = useState<{
-        header: Record<string, any> | null;
-        payload: Record<string, any> | null;
+        header: Record<string, unknown> | null;
+        payload: Record<string, unknown> | null;
         signature: string;
     }>({ header: null, payload: null, signature: "" });
     const [copied, setCopied] = useState<{ header: boolean; payload: boolean }>({
@@ -27,12 +38,6 @@ export default function JwtDecoder() {
         payload: false
     });
     const [language, setLanguage] = useState(i18n.language);
-
-    const base64UrlToBase64 = (str: string) => {
-        let base64 = str.replace(/-/g, "+").replace(/_/g, "/");
-        while (base64.length % 4) base64 += "=";
-        return base64;
-    };
 
     const decodeJwt = () => {
         setError("");
@@ -48,8 +53,8 @@ export default function JwtDecoder() {
         const [headerPart, payloadPart, signaturePart] = parts;
 
         try {
-            const header = JSON.parse(atob(base64UrlToBase64(headerPart)));
-            const payload = JSON.parse(atob(base64UrlToBase64(payloadPart)));
+            const header = JSON.parse(base64UrlDecode(headerPart));
+            const payload = JSON.parse(base64UrlDecode(payloadPart));
             setDecodedJwt({ header, payload, signature: signaturePart });
         } catch {
             setError(t("plugins.jwt-decoder.error.decode_failed"));
@@ -129,7 +134,7 @@ export default function JwtDecoder() {
 
                 {decodedJwt.payload.exp && (
                     <p className="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
-                        {t("plugins.jwt-decoder.label.expires_at")}: {formatTimestamp(decodedJwt.payload.exp)}
+                        {t("plugins.jwt-decoder.label.expires_at")}: {formatTimestamp(decodedJwt.payload.exp as number)}
                     </p>
                 )}
             </>}

@@ -6,16 +6,18 @@ import debounce from "lodash.debounce";
 import { IoCheckmarkOutline, IoCopyOutline, IoDownloadOutline } from "react-icons/io5";
 import { jsonSyntaxHighlight } from "../../../utils/utils";
 
+const MAX_SIZE_BYTES = 5 * 1024 * 1024;
+
 export default function JsonFormatter() {
     const [text, setText] = useState("");
     const [output, setOutput] = useState("");
     const [error, setError] = useState<string | null>(null);
-    const [stats, setStats] = useState<any>(null);
+    const [stats, setStats] = useState<{ lines: number; chars: number; size: string } | null>(null);
     const [isCopied, setIsCopied] = useState(false);
     const [theme, setTheme] = useState(
         localStorage.getItem("selectedTheme") === "dark" ? "vs-dark" : "vs-light"
     );
-    const editorRef = useRef<any>(null);
+    const editorRef = useRef<unknown>(null);
 
     useEffect(() => {
         const observer = new MutationObserver(() => {
@@ -131,19 +133,36 @@ export default function JsonFormatter() {
         URL.revokeObjectURL(url);
     };
 
-    const handleDrop = async (e: any) => {
+    const handleDrop = async (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault();
 
         const file = e.dataTransfer.files[0];
         if (!file) return;
 
-        const text = await file.text();
-        setText(text);
+        const fileSize = file.size;
+        if (fileSize > MAX_SIZE_BYTES) {
+            setError(t("plugins.json-formatter.errors.file-too-large"));
+            return;
+        }
+
+        const fileText = await file.text();
+        const textSize = new Blob([fileText]).size;
+        if (textSize > MAX_SIZE_BYTES) {
+            setError(t("plugins.json-formatter.errors.file-too-large"));
+            return;
+        }
+        setText(fileText);
     };
 
-    const handlePaste = async (e: any) => {
+    const handlePaste = async (e: React.ClipboardEvent<HTMLDivElement>) => {
         const pasted = e.clipboardData.getData("text");
         if (!pasted) return;
+
+        const pastedSize = new Blob([pasted]).size;
+        if (pastedSize > MAX_SIZE_BYTES) {
+            setError(t("plugins.json-formatter.errors.file-too-large"));
+            return;
+        }
 
         try {
             JSON.parse(pasted);

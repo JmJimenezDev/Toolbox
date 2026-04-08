@@ -261,7 +261,8 @@
       "errors": {
         "invalid-json": "JSON inválido",
         "unexpected-token": "Carácter inesperado en JSON",
-        "unexpected-end": "Fin inesperado del JSON"
+        "unexpected-end": "Fin inesperado del JSON",
+        "file-too-large": "El archivo excede el límite de 5MB"
       },
       "stats": {
         "lines": "Líneas",
@@ -271,7 +272,17 @@
     },
     "directory-tree-generator": {
       "title": "Generador de Árbol de Directorios",
-      "description": "Genera una representación visual en texto de la estructura de carpetas y archivos."
+      "description": "Genera una representación visual en texto de la estructura de carpetas y archivos.",
+      "label": {
+        "input": "Texto indentado",
+        "output": "Árbol ASCII"
+      },
+      "placeholder": {
+        "input-text": "Escribe tu texto indentado aquí...\nCarpeta1\n  Subcarpeta1\n    Archivo1.txt\n  Archivo2.txt"
+      },
+      "button": {
+        "generate": "Generar Árbol"
+      }
     },
     "jwt-decoder": {
       "title": "Decodificador JWT",

@@ -1,15 +1,27 @@
 import { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { AsideMenu } from '../core/layout/AsideMenu';
 import { Header } from '../core/layout/Header';
+import { plugins } from '../utils/pluginLoader';
 
 export const App = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const location = useLocation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 10);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    const currentPlugin = plugins.find(p => p.path === location.pathname);
+    const toolName = currentPlugin ? t(currentPlugin.name) : '';
+    document.title = toolName 
+      ? `${toolName} | JmJimenezToolbox` 
+      : 'JmJimenezToolbox';
+  }, [location.pathname, t]);
 
   return (
     <div className="dark:bg-neutral-900 dark:text-neutral-200 bg-neutral-100 text-neutral-800">

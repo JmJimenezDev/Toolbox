@@ -1,3 +1,304 @@
 {
-    
+  "countries": {
+    "spain": {
+      "abbreviation": "ES",
+      "flag-alt": "Flag of Spain"
+    },
+    "united-kingdom": {
+      "abbreviation": "GB",
+      "flag-alt": "Flag of United Kingdom"
+    }
+  },
+  "commons": {
+    "logo-toolbox": "JmJimenezToolbox logo",
+    "loading": "Loading...",
+    "clear": "Clear",
+    "erase": "Erase",
+    "remove": "Remove",
+    "text": "Text",
+    "add": "Add",
+    "select-etc": "Select...",
+    "select": "Select",
+    "download": "Download",
+    "type": "Type",
+    "phone": "Phone",
+    "email": "Email",
+    "result": "Result"
+  },
+  "alts": {
+    "select-language": "Select language",
+    "select-theme": "Select theme",
+    "dark-mode": "Activate dark mode",
+    "light-mode": "Activate light mode",
+    "system-mode": "Activate system mode",
+    "open-menu": "Open menu",
+    "close-menu": "Close menu",
+    "copy": "Copy"
+  },
+  "menu": {
+    "utilities": "Utilities",
+    "text": "Text",
+    "dates": "Dates",
+    "dev": "Development",
+    "made-by": "Made by"
+  },
+  "plugins": {
+    "password-generator": {
+      "title": "Password Generator",
+      "description": "Generate secure passwords with customizable options.",
+      "label": {
+        "length": "Length",
+        "uppercase": "Uppercase",
+        "lowercase": "Lowercase",
+        "numbers": "Numbers",
+        "symbols": "Symbols",
+        "generate": "Generate Password",
+        "last-copied": "Last copied"
+      },
+      "types": {
+        "very-weak": "Very weak",
+        "weak": "Weak",
+        "medium": "Medium",
+        "strong": "Strong",
+        "very-strong": "Very strong"
+      }
+    },
+    "word-counter": {
+      "title": "Word Counter",
+      "description": "Count words, characters and paragraphs in your text.",
+      "label": {
+        "words": "Words",
+        "sentences": "Sentences",
+        "characters-with-spaces": "Characters (with spaces)",
+        "characters-without-spaces": "Characters (without spaces)",
+        "paragraphs": "Paragraphs",
+        "text-placeholder": "Write or paste your text here..."
+      }
+    },
+    "time-zone-converter": {
+      "title": "Time Zone Converter",
+      "description": "Convert times between different time zones.",
+      "label": {
+        "your-time-zone": "Your time zone",
+        "set-current-time": "Set current time",
+        "convert": "Convert",
+        "results": "Results",
+        "show-time-zone": "Show time zone"
+      },
+      "time-zones": {
+        "spain": {
+          "name": "Spain",
+          "zone": "Madrid"
+        },
+        "usa_ny": {
+          "name": "United States",
+          "zone": "New York"
+        },
+        "usa_chicago": {
+          "name": "United States",
+          "zone": "Chicago"
+        },
+        "usa_denver": {
+          "name": "United States",
+          "zone": "Denver"
+        },
+        "usa_la": {
+          "name": "United States",
+          "zone": "Los Angeles"
+        },
+        "japan": {
+          "name": "Japan",
+          "zone": "Tokyo"
+        },
+        "mexico": {
+          "name": "Mexico",
+          "zone": "Mexico City"
+        },
+        "france": {
+          "name": "France",
+          "zone": "Paris"
+        },
+        "germany": {
+          "name": "Germany",
+          "zone": "Berlin"
+        },
+        "brazil": {
+          "name": "Brazil",
+          "zone": "São Paulo"
+        },
+        "uk": {
+          "name": "United Kingdom",
+          "zone": "London"
+        },
+        "italy": {
+          "name": "Italy",
+          "zone": "Rome"
+        },
+        "canada_toronto": {
+          "name": "Canada",
+          "zone": "Toronto"
+        },
+        "canada_vancouver": {
+          "name": "Canada",
+          "zone": "Vancouver"
+        },
+        "australia_sydney": {
+          "name": "Australia",
+          "zone": "Sydney"
+        },
+        "australia_melbourne": {
+          "name": "Australia",
+          "zone": "Melbourne"
+        },
+        "india": {
+          "name": "India",
+          "zone": "New Delhi"
+        },
+        "china": {
+          "name": "China",
+          "zone": "Beijing"
+        },
+        "russia_moscow": {
+          "name": "Russia",
+          "zone": "Moscow"
+        },
+        "russia_yekaterinburg": {
+          "name": "Russia",
+          "zone": "Yekaterinburg"
+        },
+        "south_africa": {
+          "name": "South Africa",
+          "zone": "Johannesburg"
+        },
+        "egypt": {
+          "name": "Egypt",
+          "zone": "Cairo"
+        },
+        "argentina": {
+          "name": "Argentina",
+          "zone": "Buenos Aires"
+        },
+        "chile": {
+          "name": "Chile",
+          "zone": "Santiago"
+        },
+        "new_zealand": {
+          "name": "New Zealand",
+          "zone": "Wellington"
+        },
+        "south_korea": {
+          "name": "South Korea",
+          "zone": "Seoul"
+        },
+        "singapore": {
+          "name": "Singapore",
+          "zone": "Singapore"
+        },
+        "uae": {
+          "name": "United Arab Emirates",
+          "zone": "Abu Dhabi"
+        }
+      }
+    },
+    "qr-generator": {
+      "title": "QR Code Generator",
+      "description": "Create custom QR codes for URLs, text and more.",
+      "label": {
+        "content": "Content",
+        "colors": "Colors",
+        "background-color": "Background color",
+        "foreground-color": "Foreground color",
+        "logo": "Logo"
+      }
+    },
+    "markdown-viewer": {
+      "title": "Markdown Viewer",
+      "description": "View your Markdown files with style and ease.",
+      "label": {
+        "input-placeholder": "Write or paste your Markdown text here...",
+        "preview": "Preview"
+      }
+    },
+    "date-converter": {
+      "title": "Date Converter",
+      "description": "Calculate and convert dates between different formats.",
+      "label": {
+        "date-difference": "Time between dates",
+        "from": "From",
+        "to": "To",
+        "from-number": "From",
+        "to-number": "To",
+        "convert": "Convert",
+        "calculate-difference": "Calculate difference",
+        "no-difference": "No difference"
+      },
+      "unit": {
+        "y": "Years",
+        "mo": "Months",
+        "w": "Weeks",
+        "d": "Days",
+        "h": "Hours",
+        "min": "Minutes",
+        "s": "Seconds",
+        "ms": "Milliseconds",
+        "date": "Date",
+        "epoch": "Epoch"
+      }
+    },
+    "json-formatter": {
+      "title": "JSON Formatter",
+      "description": "Format and validate your JSON data quickly and easily.",
+      "label": {
+        "input-placeholder": "Write, paste or drag a .json file",
+        "preview": "Preview"
+      },
+      "valid": "Valid JSON",
+      "actions": {
+        "format": "Format",
+        "minify": "Minify",
+        "validate": "Validate"
+      },
+      "errors": {
+        "invalid-json": "Invalid JSON",
+        "unexpected-token": "Unexpected token in JSON",
+        "unexpected-end": "Unexpected end of JSON",
+        "file-too-large": "File exceeds 5MB limit"
+      },
+      "stats": {
+        "lines": "Lines",
+        "characters": "Characters",
+        "size": "Size"
+      }
+    },
+    "directory-tree-generator": {
+      "title": "Directory Tree Generator",
+      "description": "Generate a text-based visual representation of folder and file structure.",
+      "label": {
+        "input": "Indented Text",
+        "output": "ASCII Tree"
+      },
+      "placeholder": {
+        "input-text": "Write your indented text here...\nFolder1\n  Subfolder1\n    File1.txt\n  File2.txt"
+      },
+      "button": {
+        "generate": "Generate Tree"
+      }
+    },
+    "jwt-decoder": {
+      "title": "JWT Decoder",
+      "description": "Decode JSON Web Token (JWT) easily. Inspect header, payload, signature and expiration date.",
+      "label": {
+        "jwt": "JWT",
+        "decode": "Decode",
+        "header": "Header",
+        "payload": "Payload",
+        "signature": "Signature",
+        "expires_at": "Expires at"
+      },
+      "error": {
+        "invalid_token": "Invalid JWT token",
+        "decode_failed": "Error decoding JWT"
+      }
+    }
+  }
 }
