@@ -1,0 +1,83 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+h1 {
+  @apply text-xl md:text-3xl font-bold;
+}
+
+input[type="checkbox"] {
+  @apply size-4 accent-green-600;
+}
+
+input {
+  @apply outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600 transition;
+}
+
+input[type="datetime-local"] {
+  @apply p-2 bg-neutral-200 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 rounded outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600 transition;
+}
+
+select {
+  @apply bg-neutral-200 dark:bg-neutral-800
+      border border-neutral-300 dark:border-neutral-700
+      rounded
+      text-sm
+      outline-none
+      focus:border-green-600 focus:ring-1 focus:ring-green-600
+      transition
+      cursor-pointer;
+}
+
+/* JSON STYLES */
+.json-key {
+  color: #a71d5d;
+}
+.json-string {
+  color: #008000;
+}
+.json-number {
+  color: #0000ff;
+}
+.json-boolean {
+  color: #d14;
+}
+.json-null {
+  color: #808080;
+}
+
+.dark .json-key {
+  color: #d19a66;
+}
+.dark .json-string {
+  color: #98c379;
+}
+.dark .json-number {
+  color: #d19a66;
+}
+.dark .json-boolean {
+  color: #e06c75;
+}
+.dark .json-null {
+  color: #c678dd;
+}
+
+/* LOADER */
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 50px;
+  padding: 8px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #2ab025;
+  --_m: 
+    conic-gradient(#0000 10%,#000),
+    linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--_m);
+          mask: var(--_m);
+  -webkit-mask-composite: source-out;
+          mask-composite: subtract;
+  animation: l3 1s infinite linear;
+}
+@keyframes l3 {to{transform: rotate(1turn)}}
