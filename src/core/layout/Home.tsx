@@ -13,7 +13,7 @@ export const Home = () => {
   }, {} as Record<string, typeof plugins>);
 
   return (
-    <main className="col-span-12 md:col-span-8 xl:col-span-9 p-6">
+    <main className="col-span-12 lg:col-span-8 xl:col-span-9 p-6">
       <h1 className="text-2xl font-semibold mb-6">
         Tools
       </h1>

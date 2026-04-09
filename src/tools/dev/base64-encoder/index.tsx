@@ -77,7 +77,7 @@ export default function Base64Encoder() {
       </button>
     </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-between">
           <label htmlFor="base64-input" className="text-sm text-neutral-600 dark:text-neutral-400">
