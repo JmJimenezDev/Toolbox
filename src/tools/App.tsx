@@ -29,7 +29,7 @@ export const App = () => {
         <Header />
         <div className="xl:px-0 grid grid-cols-12 w-full min-h-0">
           <aside className="md:flex flex-col hidden col-span-4 xl:col-span-3 border-r border-neutral-300 dark:border-neutral-800 h-full overflow-hidden">
-            <AsideMenu />
+            <AsideMenu onNavigate={undefined} />
           </aside>
 
           <main className="py-3 px-1 col-span-12 md:col-span-8 xl:col-span-9 overflow-y-auto">

@@ -6,7 +6,7 @@ import { plugins } from '../../utils/pluginLoader';
 import clsx from "clsx";
 import { IoCaretDown, IoSwapHorizontal } from "react-icons/io5";
 
-export const AsideMenu = React.memo(() => {
+export const AsideMenu = React.memo(({ onNavigate }: { onNavigate?: () => void }) => {
     const { t } = useTranslation();
     const location = useLocation();
     const activeSection = location.pathname;
@@ -63,7 +63,7 @@ export const AsideMenu = React.memo(() => {
                                     ? "border-green-600 dark:border-green-500 text-black dark:text-white"
                                     : "border-neutral-500 text-neutral-600 dark:text-neutral-400"
                             )}>
-                            <NavLink to={plugin.path} className="hover:text-neutral-900 dark:hover:text-neutral-300 flex items-center gap-2">
+                            <NavLink to={plugin.path} onClick={onNavigate} className="hover:text-neutral-900 dark:hover:text-neutral-300 flex items-center gap-2">
                                 {t(plugin.name)}
                             </NavLink>
                         </li>)}

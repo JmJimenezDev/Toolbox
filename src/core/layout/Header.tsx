@@ -119,20 +119,23 @@ export const Header = () => {
                 </button>
             </div>
 
-            <div className={`border-neutral-300 dark:border-neutral-800 text-black dark:text-white dark:bg-neutral-900 bg-gray-100 fixed border-r top-0 left-0 min-h-screen w-80 shadow-lg transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"} md:hidden z-50 flex flex-col`} >
-                <div className="flex justify-between items-center py-5 px-3">
-                    <Link to="/" className="md:hidden flex justify-center items-center gap-3">
-                        <img src={LogoToolbox} alt={t("commons.logo-toolbox")} className="size-7" />
-                        <h2 className="text-lg md:text-xl font-bold">JmJimenezToolbox</h2>
-                    </Link>
-                    <button title={t("alts.close-menu")} onClick={toggleMobileMenu} className="flex items-center cursor-pointer hover:scale-110">
-                        <IoCloseOutline className="size-7" />
-                    </button>
-                </div>
+            <div className={`fixed inset-0 z-40 transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"} md:hidden`}>
+                <div className="fixed inset-0 bg-black/50" onClick={toggleMobileMenu} />
+                <div className="border-neutral-300 dark:border-neutral-800 text-black dark:text-white dark:bg-neutral-900 bg-gray-100 fixed border-r top-0 left-0 h-full w-80 shadow-lg z-50 flex flex-col">
+                    <div className="flex justify-between items-center py-5 px-3">
+                        <Link to="/" onClick={toggleMobileMenu} className="md:hidden flex justify-center items-center gap-3">
+                            <img src={LogoToolbox} alt={t("commons.logo-toolbox")} className="size-7" />
+                            <h2 className="text-lg md:text-xl font-bold">JmJimenezToolbox</h2>
+                        </Link>
+                        <button title={t("alts.close-menu")} onClick={toggleMobileMenu} className="flex items-center cursor-pointer hover:scale-110">
+                            <IoCloseOutline className="size-7" />
+                        </button>
+                    </div>
 
-                <aside className="flex-1 flex flex-col justify-between h-full col-span-4 xl:col-span-3 sticky top-36 border-r border-neutral-300 dark:border-neutral-800">
-                    <AsideMenu />
-                </aside>
+                    <aside className="flex-1 h-full overflow-hidden border-r border-neutral-300 dark:border-neutral-800">
+                        <AsideMenu onNavigate={toggleMobileMenu} />
+                    </aside>
+                </div>
             </div>
 
             <nav>
