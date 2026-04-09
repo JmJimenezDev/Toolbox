@@ -210,105 +210,97 @@ export default function ColorConverter() {
     setTimeout(() => setCopiedFormat(null), 2000);
   };
 
-  // --------------------
-  // UI
-  // --------------------
-
   const colorFormats = [
     { format: "hex" as ColorFormat, label: "HEX", value: hexInput, onChange: handleHexChange },
     { format: "rgb" as ColorFormat, label: "RGB", value: rgbInput, onChange: handleRgbChange },
     { format: "hsl" as ColorFormat, label: "HSL", value: hslInput, onChange: handleHslChange },
   ];
 
-  return (
-    <CardSection
-      title={t("plugins.color-converter.title")}
-      description={t("plugins.color-converter.description")}
-      className="max-w-4xl"
-    >
-      <div className="flex flex-col lg:flex-row gap-8">
-        {/* LEFT */}
-        <div className="flex-1 space-y-6">
-          <div className="flex flex-col gap-4">
-            <label className="text-sm text-neutral-600 dark:text-neutral-400">
-              {t("plugins.color-converter.label.preview")}
-            </label>
+  return <CardSection
+    title={t("plugins.color-converter.title")}
+    description={t("plugins.color-converter.description")}
+    className="max-w-4xl"
+  >
+    <div className="flex flex-col lg:flex-row gap-8">
+      <div className="flex-1 space-y-6">
+        <div className="flex flex-col gap-4">
+          <label className="text-sm text-neutral-600 dark:text-neutral-400">
+            {t("plugins.color-converter.label.preview")}
+          </label>
 
-            <div
-              className="w-full h-40 rounded-lg border border-neutral-300 dark:border-neutral-700 shadow-inner transition-colors"
-              style={{ backgroundColor: hex }}
-            />
+          <div
+            className="w-full h-40 rounded-lg border border-neutral-300 dark:border-neutral-700 shadow-inner transition-colors"
+            style={{ backgroundColor: hex }}
+          />
 
-            <input
-              type="color"
-              value={hex}
-              onChange={(e) => handleHexChange(e.target.value)}
-              className="w-full h-10 cursor-pointer"
-            />
+          <input
+            type="color"
+            value={hex}
+            onChange={(e) => handleHexChange(e.target.value)}
+            className="w-full h-10 cursor-pointer"
+          />
 
-            <div className="flex justify-center">
-              <span
-                className="text-2xl font-mono font-bold"
-                style={{ color: hex }}
-              >
-                {hex.toUpperCase()}
-              </span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-3 gap-2">
-            {[
-              "#000000",
-              "#ffffff",
-              "#ff0000",
-              "#00ff00",
-              "#0000ff",
-              "#ffff00",
-              "#ff00ff",
-              "#00ffff",
-              "#ff8800",
-            ].map((color) => (
-              <button
-                key={color}
-                onClick={() => handleHexChange(color)}
-                className="w-full h-10 rounded border border-neutral-300 dark:border-neutral-700 hover:scale-105 transition-transform"
-                style={{ backgroundColor: color }}
-              />
-            ))}
+          <div className="flex justify-center">
+            <span
+              className="text-2xl font-mono font-bold"
+              style={{ color: hex }}
+            >
+              {hex.toUpperCase()}
+            </span>
           </div>
         </div>
 
-        {/* RIGHT */}
-        <div className="flex-1 space-y-4">
-          {colorFormats.map(({ format, label, value, onChange }) => (
-            <div key={format} className="flex flex-col gap-2">
-              <div className="flex items-center justify-between">
-                <label className="text-sm font-medium text-neutral-600 dark:text-neutral-400">
-                  {label}
-                </label>
-
-                <button
-                  onClick={() => copyToClipboard(format, value)}
-                  className="text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300"
-                >
-                  {copiedFormat === format ? (
-                    <IoCheckmarkOutline className="text-lg text-green-500" />
-                  ) : (
-                    <IoCopyOutline className="text-lg" />
-                  )}
-                </button>
-              </div>
-
-              <input
-                type="text"
-                value={value}
-                onChange={(e) => onChange(e.target.value)}
-                className="w-full p-3 font-mono bg-neutral-200 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 rounded outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600 transition"
-              />
-            </div>
+        <div className="grid grid-cols-3 gap-2">
+          {[
+            "#000000",
+            "#ffffff",
+            "#ff0000",
+            "#00ff00",
+            "#0000ff",
+            "#ffff00",
+            "#ff00ff",
+            "#00ffff",
+            "#ff8800",
+          ].map((color) => (
+            <button
+              key={color}
+              onClick={() => handleHexChange(color)}
+              className="w-full h-10 rounded border border-neutral-300 dark:border-neutral-700 hover:scale-105 transition-transform"
+              style={{ backgroundColor: color }}
+            />
           ))}
         </div>
       </div>
-    </CardSection>
-  );
+
+      <div className="flex-1 space-y-4">
+        {colorFormats.map(({ format, label, value, onChange }) => (
+          <div key={format} className="flex flex-col gap-2">
+            <div className="flex items-center justify-between">
+              <label className="text-sm font-medium text-neutral-600 dark:text-neutral-400">
+                {label}
+              </label>
+
+              <button
+                onClick={() => copyToClipboard(format, value)}
+                className="text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300"
+              >
+                {copiedFormat === format ? (
+                  <IoCheckmarkOutline className="text-lg text-green-500" />
+                ) : (
+                  <IoCopyOutline className="text-lg" />
+                )}
+              </button>
+            </div>
+
+            <input
+              type="text"
+              value={value}
+              onChange={(e) => onChange(e.target.value)}
+              className="w-full p-3 font-mono bg-neutral-200 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 rounded outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600 transition"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </CardSection>
 }

@@ -28,7 +28,7 @@ export const App = () => {
       <div className={`${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-600 ease-in-out w-full h-screen grid grid-rows-[auto_1fr] overflow-hidden`}>
         <Header />
         <div className="xl:px-0 grid grid-cols-12 w-full min-h-0">
-          <aside className="md:flex flex-col justify-between hidden col-span-4 xl:col-span-3 border-r border-neutral-300 dark:border-neutral-800 h-full">
+          <aside className="md:flex flex-col hidden col-span-4 xl:col-span-3 border-r border-neutral-300 dark:border-neutral-800 h-full overflow-hidden">
             <AsideMenu />
           </aside>
 

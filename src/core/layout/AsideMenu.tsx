@@ -39,8 +39,8 @@ export const AsideMenu = React.memo(() => {
         return acc;
     }, {} as Record<string, IPlugin[]>);
 
-    return <div className="flex flex-col justify-between flex-1 py-10 px-5">
-        <div className="overflow-y-auto max-h-160">
+    return <div className="flex flex-col h-full">
+        <div className="flex-1 overflow-y-auto py-10 px-5">
             <div className="mb-5 flex justify-end">
                 {activeSection !== "/" && <button onClick={closeAllExceptActive} className="border border-neutral-300 dark:border-neutral-700 cursor-pointer p-3 rounded hover:bg-neutral-200 dark:hover:bg-neutral-950 text-xs text-neutral-400">
                     <IoSwapHorizontal className="text-lg" />
@@ -64,7 +64,7 @@ export const AsideMenu = React.memo(() => {
                                     : "border-neutral-500 text-neutral-600 dark:text-neutral-400"
                             )}>
                             <NavLink to={plugin.path} className="hover:text-neutral-900 dark:hover:text-neutral-300 flex items-center gap-2">
-                                <plugin.icon /> {t(plugin.name)}
+                                {t(plugin.name)}
                             </NavLink>
                         </li>)}
                     </ul>
@@ -72,8 +72,8 @@ export const AsideMenu = React.memo(() => {
             ))}
         </div>
 
-        <div>
-            <h3 className="text-neutral-700 dark:text-neutral-300 underline mt-6">{t("menu.made-by")}</h3>
+        <div className="shrink-0 px-5 pb-5 my-5">
+            <h3 className="text-neutral-700 dark:text-neutral-300 underline">{t("menu.made-by")}</h3>
             <ul className="mt-3 space-y-1">
                 <li className="border-l pl-6 py-3 border-neutral-500 text-neutral-600 dark:text-neutral-400 flex items-center gap-2">
                     <Link to="https://jmjimenez.dev" target="_blank" rel="noopener noreferrer"
